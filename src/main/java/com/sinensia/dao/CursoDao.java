@@ -7,8 +7,13 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.sinensia.model.Curso;
 
+/**
+ * Extendemos de JpaRepository
+ * 
+ * @see com.sinensia.service.CursoServiceImpl
+ */
 public interface CursoDao extends JpaRepository<Curso, Integer> {
-	
+
 	@Query("select c from Curso c where c.disponibilidad = 'si'")
 	List<Curso> getIfAvailable();
 

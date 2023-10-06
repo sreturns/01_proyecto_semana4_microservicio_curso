@@ -8,27 +8,52 @@ import org.springframework.stereotype.Service;
 import com.sinensia.dao.CursoDao;
 import com.sinensia.model.Curso;
 
+/**
+ * Nuestro @Service
+ *
+ * @see com.sinensia.service.CursoService
+ * @see com.sinensia.controller.CursoController
+ * @see com.sinensia.dao.CursoDao
+ */
 @Service
 public class CursoServiceImpl implements CursoService {
 
+	/**
+	 * Inyectamos nuestro dao para poder acceder a los metodos Crud
+	 */
 	@Autowired
 	private CursoDao dao;
 
+	/**
+	 * 
+	 * @return List
+	 */
 	@Override
 	public List<Curso> getIfAvailable() {
 		return dao.getIfAvailable();
 	}
 
+	/**
+	 * 
+	 * @param nombre
+	 */
 	@Override
 	public Curso getByName(String nombre) {
 		return dao.getByName(nombre);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public List<Curso> getAll() {
 		return dao.findAll();
 	}
 
+	/**
+	 * 
+	 * @param idCurso
+	 */
 	@Override
 	public List<Curso> deleteById(int idCurso) {
 		try {
@@ -43,6 +68,10 @@ public class CursoServiceImpl implements CursoService {
 		return dao.findAll();
 	}
 
+	/**
+	 * 
+	 * @param curso
+	 */
 	@Override
 	public void update(Curso curso) {
 		try {
@@ -59,6 +88,10 @@ public class CursoServiceImpl implements CursoService {
 
 	}
 
+	/**
+	 * 
+	 * @param curso
+	 */
 	@Override
 	public List<Curso> save(Curso curso) {
 		try {
@@ -67,6 +100,8 @@ public class CursoServiceImpl implements CursoService {
 			}
 			if (curso.getPlazas() == 0) {
 				curso.setDisponibilidad("no");
+			} else {
+				curso.setDisponibilidad("si");
 			}
 			dao.save(curso);
 		} catch (IllegalArgumentException e) {
@@ -75,6 +110,10 @@ public class CursoServiceImpl implements CursoService {
 		return dao.findAll();
 	}
 
+	/**
+	 * 
+	 * @param avaiables
+	 */
 	public List<Curso> getListType(Boolean avaiables) {
 		List<Curso> cursos;
 

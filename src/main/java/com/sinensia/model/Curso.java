@@ -8,6 +8,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Nuestra clase mapeada con la tabla cursos
+ * 
+ * @see com.sinensia.dao.CursoDao
+ */
 @Entity
 @Table(name = "cursos")
 public class Curso {
@@ -24,6 +29,14 @@ public class Curso {
 	public Curso() {
 	}
 
+	/**
+	 * 
+	 * @param nombre
+	 * @param duracion
+	 * @param precio
+	 * @param disponibilidad
+	 * @param plazas
+	 */
 	public Curso(String nombre, int duracion, double precio, String disponibilidad, int plazas) {
 		this.nombre = nombre;
 		this.duracion = duracion;
@@ -67,7 +80,7 @@ public class Curso {
 		this.nombre = nombre;
 	}
 
-	public int getPlazas(){
+	public int getPlazas() {
 		return plazas;
 	}
 
